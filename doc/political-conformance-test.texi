@@ -1,0 +1,125 @@
+\input texinfo
+@c -*-texinfo-*-
+
+@c %**start of header
+@setfilename political-conformance-test.info
+@documentencoding UTF-8
+@settitle Political Conformance Test Reference Manual
+@c %**end of header
+
+@copying
+Copyright @copyright{} 2022 James Crake-Merani
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+copy of the license is included in the section entitled ``GNU Free
+Documentation License''.
+@end copying
+
+@titlepage
+@title The Political-Conformance-Test Manual
+@author James Crake-Merani
+
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@contents
+
+@node top
+@top Political Conformance Test Reference Manual
+
+This manual describes a program designed to test a user's conformance to a certain political ideology. The conformance is expressed as a percentage. The project was created partially as a joke, but also as a programming exercise thus it should not be taken seriously.
+
+I started writing a prototype at school when I was bored, and I decided to rewrite it in order to practice GNU Guile (which this project is written using). The inital prototype was used to test how much of a Tory the user is but in the rewrite I decided to design the program to test any political ideology.
+
+The program performs the test via a series of questions, with each question having a maximum score. A score of 0 implies there is no agreement between the user, and a given statement, and a maximum score implies full agreement between the user, and a given statement. After all questions are asked, the program divides the total score attained by the user by the maximum possible score the user could've got.
+
+@menu
+* Using the command-line interface:: How to use the command line interface supplied with this distribution.
+* Questions file:: How a questions file is formatted.
+* Creating a program using political conformance test:: How to create a program that uses the library.
+@end menu
+
+@node Using the command-line interface
+@chapter Using the command-line interface
+
+This distribution of the program comes with a script that performs the test on the user via the console. Questions are asked interactively, and at the end a percentage is printed representing the user's conformance to the ideology.
+
+The script can be called from the terminal. It should be installed as @command{political-conformance-test} on the path. You must supply a text file containing questions the user will be asked as the first argument. The user will be prompted to type in a number which corresponds with a certain response for every qeuestion.
+
+@node Questions file
+@chapter Questions file
+
+In the questions file, there is a pair of lines for every question. The first line in the pair is the question text itself which the program is expected to present to the user. The second line in the pair is a number representing the maximum score on that question. Below is an example of such a file.
+
+@example
+This is a question, and below is a maximum score
+3
+And here's another question.
+3
+@end example
+
+@node Creating a program using political conformance test
+@chapter Creating a program using political conformance test
+This chapter will detail how you can use the library to produce an interface for the political conformance test which uses its operations. This chapter will detail how to use scheme code using GNU Guile but any other language that GNU Guile supports can also be used.
+
+The console application supplied with this distribution may serve as a useful example for one such implementation of the political conformance test. It can be found under the filename @file{interactive-console.scm}, and there is also a script which starts the interactive console which you can find in the scripts directory.
+
+@menu
+* Import the module:: Details on importing the @code{operations} module.
+* Representing questions in Scheme:: How questions are represented, and in which format they are handled.
+* Representing scores:: How scores are represented.
+* Response strings:: The response strings that the library provides.
+* Answering questions:: How your program should let the user answer questions.
+* Adding up the score:: The last step of adding up the score, and presenting this to the user.
+@end menu
+
+@node Import the module
+@section Import the module
+Specifically, the @code{operations} needs to be imported. In Guile, the following code can be used:
+
+@lisp
+(use-modules (political-conformance-test operations))
+@end lisp
+
+@node Representing questions in Scheme
+@section Representing questions in Scheme
+A question in Scheme is represented as a pair where the @code{car} is the question text string that is to be presented to the user, and the @code{cdr} is the maximum score a user can input on the question. And example of a list of questions is shown below
+
+@lisp
+'(("This is the question text" . 3)
+  ("The cdr is the maximum score" . 3))
+@end lisp
+
+The operations module also provides a function @code{load-questions} to load questions from a specified path, or you can use @code{parse-questions} if you already have a string of questions. @xref{Questions file}
+
+@node Representing scores
+@section Representing scores
+A score is also represented as a pair with the @code{car} being the score that was entered, and @code{cdr} being the maximum score. Below is an example
+
+@lisp
+'(2 . 3)'
+@end lisp
+
+Where in this particular score, the user has entered @code{2} but the maximum score they could've entered is @code{3}.
+
+@node Response strings
+@section Response strings
+To help the user understand what the score they are inputting actually means, the user is normally not prompted with the score itself but rather a string which explains to the user what the score means. This is normally a string which represents a certain level of agreement.
+
+At the moment, only 2 maximum scores have response strings for them: @code{3}, and @code{1}. The strings for @code{3} represent agreement from strongly disagree to strongly agree, for @code{1}, binary yes, or no responses are given. Consult the @code{response-strings} function in @file{operations.scm} if you want to see all the response strings.
+
+@node Answering questions
+@section Answering questions
+Your program should present a question alongside its corresponding response string. Once you have got the user's score for that question, you should use the @code{answer-next-question} which will take in your questions, and scores list alongside the user's answer. This function will then evaluate to a new score list. It will @strong{not} give you an updated questions list; you should just take the @code{cdr} of your current questions list to get your new questions list.
+
+@node Adding up the score
+@section Adding up the score
+Finally, once your questions list is empty you can use the @code{test-fraction} function to get a fraction which represents the result of how much the user conforms to the tested ideology. However, fractions are not very presentable to the user as they would probably prefer to see a percentage. The @code{as-percentage} function will the fraction into an inexact number which will be multiplied by 100 to get the percentage which can then be presented to the user.
+
+
+@bye

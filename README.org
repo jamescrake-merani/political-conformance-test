@@ -1,0 +1,29 @@
+# -*- mode: org; coding: utf-8; -*-
+
+#+TITLE: README for Political-Conformance-Test
+
+* Political Conformance Test
+
+This is a program to test the user's conformance to a certain political ideology. It expresses this conformance in a percentage. It was mainly created as a joke, and should not be used for any serious purpose. For more information, including the inner-workings of the program, please read the documentation included.
+** Command-line interface
+Included with this project is a command-line interface for the project, invoked as ~political-conformance-test~. When using it, you must supply a directory to a questions file as an argument.
+** Question file
+A question file looks something like this.
+#+BEGIN_SRC
+This is a question, and below is a maximum score
+3
+This is another question where you will also notice the maximum score underneath it
+3
+#+END_SRC
+Please consult the documentation for a further description of this file.
+** Build Instructions
+This project uses Guile Hall. In order to build it, you must use the normal autoconf commands
+#+BEGIN_SRC bash
+autoreconf -vfi
+./configure
+make
+sudo make install
+#+END_SRC
+There is also a guix.scm file for you to install view Guix if that's something you're interested in.
+** Issues & Bugs
+If you encounter any bugs while using the progam, please just create an issue on GitHub.
