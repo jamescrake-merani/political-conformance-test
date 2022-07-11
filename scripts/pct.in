@@ -1,4 +1,5 @@
-#!@GUILE@ -s
+#!@GUILE@ \
+-e main -s
 !#
 
 ;;; Political Conformance Test
@@ -20,13 +21,30 @@
 ;; This is a script which asks a question based on the file supplied by the command line argument.
 ;; TODO: Allow input from STDIN
 
+(define (print-help)
+  (display "Political Conformance Test. Please supply a questions file as an argument. For more info, consult the documentation")
+  (newline))
+
 (use-modules (political-conformance-test operations)
              (political-conformance-test interactive-console))
 
-(let* ((questions-path (cadr (program-arguments)))
-       (questions (load-questions questions-path))
-       (scores (ask-questions questions))
-       (total-frac-score (test-fraction scores))
-       (percentage-score (as-percentage total-frac-score)))
-  (display (string-append "You conformance to this ideology is: " (number->string percentage-score) "%"))
-  (newline))
+
+(define (main args)
+  (let* ((questions-path (car args))
+         (questions (load-questions questions-path))
+         (scores (ask-questions questions))
+         (total-frac-score (test-fraction scores))
+         (percentage-score (as-percentage total-frac-score)))
+    (display (string-append "You conformance to this ideology is: " (number->string percentage-score) "%"))
+    (newline)))
+
+
+(define (main args)
+  (if (null? (cdr args))
+      (print-help)
+      (let* ((questions (load-questions (cadr args)))
+             (scores (ask-questions questions))
+             (total-frac-score (test-fraction scores))
+             (percentage-score (as-percentage total-frac-score)))
+        (display (string-append "You conformance to this ideology is: " (number->string percentage-score) "%"))
+        (newline))))
