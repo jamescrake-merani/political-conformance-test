@@ -6,7 +6,7 @@
 
 This is a program to test the user's conformance to a certain political ideology. It expresses this conformance in a percentage. It was mainly created as a joke, and should not be used for any serious purpose. For more information, including the inner-workings of the program, please read the documentation included.
 ** Command-line interface
-Included with this project is a command-line interface for the project, invoked as ~political-conformance-test~. When using it, you must supply a directory to a questions file as an argument.
+Included with this project is a command-line interface for the project, invoked as ~pct~. When using it, you must supply a directory to a questions file as an argument.
 ** Question file
 A question file looks something like this.
 #+BEGIN_SRC

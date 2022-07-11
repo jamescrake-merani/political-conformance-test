@@ -49,7 +49,7 @@ The program performs the test via a series of questions, with each question havi
 
 This distribution of the program comes with a script that performs the test on the user via the console. Questions are asked interactively, and at the end a percentage is printed representing the user's conformance to the ideology.
 
-The script can be called from the terminal. It should be installed as @command{political-conformance-test} on the path. You must supply a text file containing questions the user will be asked as the first argument. The user will be prompted to type in a number which corresponds with a certain response for every qeuestion.
+The script can be called from the terminal. It should be installed as @command{pct} on the path. You must supply a text file containing questions the user will be asked as the first argument. The user will be prompted to type in a number which corresponds with a certain response for every qeuestion.
 
 @node Questions file
 @chapter Questions file
