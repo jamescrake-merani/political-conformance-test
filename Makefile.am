@@ -1,4 +1,4 @@
-bin_SCRIPTS = scripts/political-conformance-test
+bin_SCRIPTS = scripts/pct
 
 # Handle substitution of fully-expanded Autoconf variables.
 do_subst = $(SED)					\
@@ -55,10 +55,16 @@ info_TEXINFOS = doc/political-conformance-test.texi
 
 EXTRA_DIST += README.org \
               README \
-              LICENSE \
+              NEWS \
+              AUTHORS \
+              COPYING \
               guix.scm \
-              .gitignore \
               hall.scm \
+              build-aux/missing \
+              build-aux/texinfo.tex \
+              build-aux/test-driver.scm \
+              build-aux/install-sh \
+              pre-inst-env.in \
               build-aux/test-driver.scm \
               $(TESTS)
 

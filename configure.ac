@@ -1,7 +1,7 @@
 dnl -*- Autoconf -*-
 
-AC_INIT(political-conformance-test, 0.1)
-AC_SUBST(HVERSION, "\"0.1\"")
+AC_INIT(political-conformance-test, 0.2)
+AC_SUBST(HVERSION, "\"0.2\"")
 AC_SUBST(AUTHOR, "\"James Crake-Merani\"")
 AC_SUBST(COPYRIGHT, "'(2022)")
 AC_SUBST(LICENSE, gpl3+)
@@ -12,7 +12,7 @@ AM_SILENT_RULES([yes])
 
 AC_CONFIG_FILES([Makefile])
 AC_CONFIG_FILES([pre-inst-env], [chmod +x pre-inst-env])
-AC_CONFIG_FILES([scripts/political-conformance-test],[chmod +x scripts/political-conformance-test])
+AC_CONFIG_FILES([scripts/pct],[chmod +x scripts/pct])
 dnl Search for 'guile' and 'guild'.  This macro defines
 dnl 'GUILE_EFFECTIVE_VERSION'.
 GUILE_PKG([3.0 2.2 2.0])
