@@ -24,6 +24,6 @@ autoreconf -vfi
 make
 sudo make install
 #+END_SRC
-There is also a guix.scm file for you to install view Guix if that's something you're interested in.
+There is also a guix.scm file for you so you can install the program via Guix if that's something you're interested in.
 ** Issues & Bugs
 If you encounter any bugs while using the progam, please just create an issue on GitHub.
