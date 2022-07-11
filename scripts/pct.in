@@ -28,6 +28,12 @@
 (use-modules (political-conformance-test operations)
              (political-conformance-test interactive-console))
 
+;; The open function doesn't have its own exceptions so this
+;; function is needed in order to get a specific error that
+;; can be presented to the user.
+(define (get-file-error args)
+  (car (list-ref args 3)))
+
 
 (define (main args)
   (let* ((questions-path (car args))
@@ -42,9 +48,12 @@
 (define (main args)
   (if (null? (cdr args))
       (print-help)
-      (let* ((questions (load-questions (cadr args)))
-             (scores (ask-questions questions))
-             (total-frac-score (test-fraction scores))
-             (percentage-score (as-percentage total-frac-score)))
-        (display (string-append "You conformance to this ideology is: " (number->string percentage-score) "%"))
-        (newline))))
+      (catch #t (lambda () (let* ((questions (load-questions (cadr args)))
+                               (scores (ask-questions questions))
+                               (total-frac-score (test-fraction scores))
+                               (percentage-score (as-percentage total-frac-score)))
+                          (display (string-append "You conformance to this ideology is: " (number->string percentage-score) "%"))
+                          (newline)))
+        (lambda (. args)
+          (display (string-append "Cannot load file: " (get-file-error args)))
+          (newline)))))
