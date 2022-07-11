@@ -18,9 +18,7 @@
                (scheme-file "operations")))))
          (tests ((directory "tests" ())))
          (programs
-           ((directory
-              "scripts"
-              ((in-file "political-conformance-test")))))
+           ((directory "scripts" ((in-file "pct")))))
          (documentation
            ((org-file "README")
             (symlink "README" "README.org")
