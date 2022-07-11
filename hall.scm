@@ -1,7 +1,7 @@
 (hall-description
   (name "political-conformance-test")
   (prefix "")
-  (version "0.1")
+  (version "0.2")
   (author "James Crake-Merani")
   (copyright (2022))
   (synopsis "")
@@ -37,6 +37,4 @@
                (tex-file "texinfo")
                (scheme-file "test-driver")
                (text-file "install-sh")))
-            (autoconf-file "configure")
-            (automake-file "Makefile")
             (in-file "pre-inst-env")))))
