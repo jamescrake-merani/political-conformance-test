@@ -31,6 +31,19 @@
                        (loop (cdr remaining-responses) (string-append out-string (number->string (1+ iteration)) ". " (car remaining-responses) " ") (1+ iteration))))))
     (loop (response-strings maximum-score) "" 0)))
 
+(define (get-user-response max-response)
+  (let* ((entered-response (readline "Your response: "))
+         (response-num (string->number entered-response))) ;;Will be #f if entered-response is NaN
+    (if (or
+         (not response-num)
+         (> response-num max-response)
+         (< response-num 0))
+        (begin
+          (display (format #f "You must enter a number between 1 and ~s" (number->string max-response)))
+          (newline)
+          (get-user-response max-response))
+        response-num)))
+
 ;; Question is a question pair
 (define-public (ask-question question)
   "Asks a question interactively, and evaluates to the answer"
@@ -41,7 +54,7 @@
    "Choose a response from the following: "
    (response-string (cdr question))
    "\n"))
-  (1- (string->number (readline "Your response:")))) ;TODO: Possibly some validation here.
+  (1- (string->number (get-user-response (1+ (cdr question))))))
 
 ;; See operations for details on the format of scores
 (define-public (ask-questions questions)
