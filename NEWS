@@ -12,3 +12,11 @@ Copyright © (2022) James Crake-Merani <james[at]jamescm[dot]co[dot]uk>
 Please send Political-Conformance-Test bug reports to james[at]jamescm[dot]co[dot]uk
 
 * Publication at 0.1
+* 0.2
+** Renamed the =political-conformance-test= script to =pct= so it is easier, and faster to type.
+** The =pct= script now has exception handling for when the target file cannot be loaded. An error is printed when this is the case.
+** The interactive module now validates user input rather than blindingly accepting it.
+** Percentages are now rounded.
+** Interactive console does not output a percentage with any decimal places.
+** The yes, and no response strings are posistioned as they should be because previously, responding no resulted in full agreement being registered despite the opposite being the case in such a situation.
+** The =pct= script is no longer auto-compiled.
