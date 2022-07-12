@@ -37,7 +37,7 @@
 
 (define-public (as-percentage n)
   "Takes an exact fraction, and represents it as an inexact percentage"
-  (* n 100.0))
+  (round (* n 100.0)))
 
 ;; Questions are represented by a pair with the car being the question string (presented to the user) and the cdr being the maximum score
 (define-public (answer-next-question questions scores answer)
