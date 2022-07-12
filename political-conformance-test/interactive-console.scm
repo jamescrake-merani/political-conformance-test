@@ -39,7 +39,7 @@
          (> response-num max-response)
          (< response-num 0))
         (begin
-          (display (format #f "You must enter a number between 1 and ~s" (number->string max-response)))
+          (display (format #f "You must enter a number between 1 and ~a" (number->string max-response)))
           (newline)
           (get-user-response max-response))
         response-num)))
