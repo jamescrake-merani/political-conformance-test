@@ -55,5 +55,7 @@
                           (display (string-append "You conformance to this ideology is: " (number->string percentage-score) "%"))
                           (newline)))
         (lambda (. args)
-          (display (string-append "Cannot load file: " (get-file-error args)))
-          (newline)))))
+          (cond ((eq? (car args) 'system-error) (begin
+                                               (display (string-append "Cannot load file: " (get-file-error args)))
+                                               (newline)))
+                (else (throw (car args) (cdr args))))))))
