@@ -22,13 +22,11 @@
 (use-modules (ice-9 readline)
              (political-conformance-test operations))
 
-;;(format #t "~s ~s ~s " out-string (number->string (1+ iteration)) (car remaining-responses))
-;;TODO: For some reason the above approach didn't work but I thought that was a more elegant approach. Investigate
 (define (response-string maximum-score)
   (letrec ((loop (lambda (remaining-responses out-string iteration)
                    (if (null? remaining-responses)
                        out-string
-                       (loop (cdr remaining-responses) (string-append out-string (number->string (1+ iteration)) ". " (car remaining-responses) " ") (1+ iteration))))))
+                       (loop (cdr remaining-responses) (format #f "~a ~a. ~a" out-string (number->string (1+ iteration)) (car remaining-responses)) (1+ iteration))))))
     (loop (response-strings maximum-score) "" 0)))
 
 (define (get-user-response max-response)
