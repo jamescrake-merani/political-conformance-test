@@ -14,7 +14,6 @@
 ;;; but WITHOUT ANY WARRANTY; without even the implied warranty of
 ;;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ;;; GNU General Public License for more details.
-;;;
 ;;; You should have received a copy of the GNU General Public License
 ;;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
@@ -26,7 +25,8 @@
   (newline))
 
 (use-modules (political-conformance-test operations)
-             (political-conformance-test interactive-console))
+             (political-conformance-test interactive-console)
+             (ice-9 format))
 
 ;; The open function doesn't have its own exceptions so this
 ;; function is needed in order to get a specific error that
@@ -52,7 +52,7 @@
                                (scores (ask-questions questions))
                                (total-frac-score (test-fraction scores))
                                (percentage-score (as-percentage total-frac-score)))
-                          (display (string-append "You conformance to this ideology is: " (number->string percentage-score) "%"))
+                          (display (format #f "Your conformance to this ideology is: ~d%" (inexact->exact percentage-score)))
                           (newline)))
         (lambda (. args)
           (cond ((eq? (car args) 'system-error) (begin
