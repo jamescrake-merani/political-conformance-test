@@ -20,7 +20,7 @@
 (define-public (response-strings maximum-score)
   "Gives an appropriate list of response strings with a given maximum score"
   (cond ((= maximum-score 3) '("Strongly disagree" "Disagree" "Agree" "Strongly agree"))
-        ((= maximum-score 1) '("Yes" "No"))
+        ((= maximum-score 1) '("No" "Yes"))
         (else #f)))
 
 ;; Scores is a list of pairs.
