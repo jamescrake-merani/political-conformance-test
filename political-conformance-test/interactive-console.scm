@@ -22,11 +22,6 @@
 (use-modules (ice-9 readline)
              (political-conformance-test operations))
 
-;;(define (response-strings maximum-score) FIXME: Deprecated; remove.
-;;  (cond ((= maximum-score 3) "1. Strongly disagree, 2. Disagree, 3. Agree, 4. Strongly agree")
-;;        (else "No response strings for this")))
-
-
 ;;(format #t "~s ~s ~s " out-string (number->string (1+ iteration)) (car remaining-responses))
 ;;TODO: For some reason the above approach didn't work but I thought that was a more elegant approach. Investigate
 (define (response-string maximum-score)
