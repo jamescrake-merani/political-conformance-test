@@ -54,7 +54,7 @@
    "Choose a response from the following: "
    (response-string (cdr question))
    "\n"))
-  (1- (string->number (get-user-response (1+ (cdr question))))))
+  (1- (get-user-response (1+ (cdr question)))))
 
 ;; See operations for details on the format of scores
 (define-public (ask-questions questions)
