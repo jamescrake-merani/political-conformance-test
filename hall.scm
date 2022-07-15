@@ -1,7 +1,7 @@
 (hall-description
   (name "political-conformance-test")
   (prefix "")
-  (version "0.2")
+  (version "0.3")
   (author "James Crake-Merani")
   (copyright (2022))
   (synopsis "")
