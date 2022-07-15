@@ -1,7 +1,7 @@
 dnl -*- Autoconf -*-
 
-AC_INIT(political-conformance-test, 0.2)
-AC_SUBST(HVERSION, "\"0.2\"")
+AC_INIT(political-conformance-test, 0.3)
+AC_SUBST(HVERSION, "\"0.3\"")
 AC_SUBST(AUTHOR, "\"James Crake-Merani\"")
 AC_SUBST(COPYRIGHT, "'(2022)")
 AC_SUBST(LICENSE, gpl3+)

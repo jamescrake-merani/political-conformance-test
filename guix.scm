@@ -13,10 +13,10 @@
 
 (package
   (name "political-conformance-test")
-  (version "0.2")
+  (version "0.3")
   (source
     (local-file
-      "./political-conformance-test-0.2.tar.gz"))
+      "./political-conformance-test-0.3.tar.gz"))
   (build-system gnu-build-system)
   (arguments
     `(#:modules
