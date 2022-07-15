@@ -19,13 +19,14 @@
 
 (define example-parsable-questions "First example
 1
-Second Example
+Second example
 3")
 
 (test-begin "pct-test")
 
 ;; This test ensures that questions can be parsed from test correctly
 (let ((parsed-questions (parse-questions example-parsable-questions)))
-  (test-equal parsed-questions '(("First example" . 1) ("Second example" . 3))))
+  ;; Because the questions are consed, they will be output in reverse order.
+  (test-equal parsed-questions '(("Second example" . 3) ("First example" . 1))))
 
 (test-end "pct-test")
