@@ -84,6 +84,7 @@
   (synopsis "")
   (description
     "A program to test the conformance of the user to particular political ideology")
-  (home-page "")
+  (home-page
+    "https://github.com/jamescrake-merani/political-conformance-test")
   (license license:gpl3+))
 

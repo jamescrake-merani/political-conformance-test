@@ -7,7 +7,8 @@
   (synopsis "")
   (description
     "A program to test the conformance of the user to particular political ideology")
-  (home-page "https://github.com/jamescrake-merani/political-conformance-test")
+  (home-page
+    "https://github.com/jamescrake-merani/political-conformance-test")
   (license gpl3+)
   (dependencies `())
   (skip ())
@@ -16,7 +17,7 @@
               "political-conformance-test"
               ((scheme-file "interactive-console")
                (scheme-file "operations")))))
-         (tests ((directory "tests" ())))
+         (tests ((directory "tests" ((scheme-file "pct-test")))))
          (programs
            ((directory "scripts" ((in-file "pct")))))
          (documentation

@@ -35,7 +35,7 @@ SUFFIXES = .scm .go
 SOURCES = political-conformance-test/interactive-console.scm \
           political-conformance-test/operations.scm
 
-TESTS = 
+TESTS = tests/pct-test.scm
 
 TEST_EXTENSIONS = .scm
 SCM_LOG_DRIVER =                                \
