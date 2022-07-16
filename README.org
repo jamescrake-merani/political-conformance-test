@@ -16,6 +16,14 @@ This is another question where you will also notice the maximum score underneath
 3
 #+END_SRC
 Please consult the documentation for a further description of this file.
+** Build Dependencies
+- autoconf
+- automake
+- pkg-config
+- texinfo
+- guile-hall
+** Dependences
+- GNU Guile
 ** Build Instructions
 This project uses Guile Hall. In order to build it, you must use the normal autoconf commands
 #+BEGIN_SRC bash
